@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+input[type="number"] {
+	-moz-appearance: textfield;
+	appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+@layer components {
+	.bg-primary {
+		@apply bg-[#F1EFE6];
+	}
+
+	.bg-primary-light {
+		@apply bg-[#FDFCF8];
+	}
+
+	.bg-grey-dark {
+		@apply bg-[#464646];
+	}
+
+	.text-grey-dark {
+		@apply text-[#464646];
+	}
+
+	.bg-grey-medium {
+		@apply bg-[#827F7F];
+	}
+
+	.bg-grey-light {
+		@apply bg-[#919191];
+	}
+
+	.text-grey-light {
+		@apply text-[#919191];
+	}
+
+	.bg-primary-red {
+		@apply bg-[#FFA986];
+	}
+
+	.bg-primary-orange {
+		@apply bg-[#FFCA71];
+	}
+
+	.bg-primary-green {
+		@apply bg-[#C0CF75];
+	}
+
+	.bg-primary-blue {
+		@apply bg-[#9DE9F8];
+	}
+
+	.bg-primary-purple {
+		@apply bg-[#CEB6FF];
+	}
+
+	.border-r-grey-dark {
+		@apply border-r-[#c4c4c4];
+	}
+}
