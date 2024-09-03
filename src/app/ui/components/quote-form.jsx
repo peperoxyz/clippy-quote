@@ -64,7 +64,7 @@ export const QuoteForm = ({ categories }) => {
 			</div>
 			<div className="text-[#827F7F] text-xl ">
 				<label htmlFor="transcript">
-					<span className="text-lg font-medium bg-primary"> Transcript </span> <small>(Full Text, don't have to put the quotation mark!)</small>
+					<span className="text-lg font-medium bg-primary"> Transcript </span> <small>(Full Text, don&apos;t have to put the quotation mark!)</small>
 				</label>
 				<textarea className="textarea-quote w-full mt-1 " name="transcript" value={transcript} id="transcript" onChange={(e) => setTranscript(e.target.value)} rows="5"></textarea>
 			</div>
