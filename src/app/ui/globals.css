@@ -18,6 +18,18 @@ input[type="number"]::-webkit-outer-spin-button {
 }
 
 @layer components {
+	.select-category {
+		@apply block p-2 px-3 font-normal text-base border bg-[#F1EFE6] border-[#B9B8B4] rounded-[6px];
+	}
+
+	.input-quote {
+		@apply block p-2 px-3 font-normal text-base border bg-[#F1EFE6] border-[#B9B8B4] rounded-[6px];
+	}
+
+	.textarea-quote {
+		@apply block p-2 px-3 font-normal text-base border bg-[#F1EFE6] border-[#B9B8B4] rounded-[6px];
+	}
+
 	.bg-primary {
 		@apply bg-[#F1EFE6];
 	}
@@ -40,6 +52,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
 	.bg-grey-light {
 		@apply bg-[#919191];
+	}
+
+	.text-primary-light {
+		@apply text-[#FDFCF8];
 	}
 
 	.text-grey-light {
