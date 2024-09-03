@@ -1,33 +1,18 @@
-const fetchCategories = async () => {
-	const res = await fetch("https://v1.appbackend.io/v1/rows/QSnvVuqR8Kdh");
-	const { data } = await res.json();
-	return data;
-};
+import { CqLogo } from "../ui/cq-logo";
+import { crimson_text } from "../ui/fonts";
+import { HeroTitle } from "../../app/ui/dashboard/hero-title";
+import { QuoteCard } from "../../app/ui/dashboard/quote-card";
+import { CategoryCard } from "../../app/ui/dashboard/category-card";
 
 export default async function Home() {
-	const categories = await fetchCategories();
-	console.log(categories);
 	return (
 		<div className="children-wrapper md:flex gap:5">
-			<section className="section-categories p-3 bg-primary md:w-1/2 w-full border">
-				<div>{/* <TitlePage /> */}</div>
-				<div className="search-and-button-category flex justify-between">
-					{/* <SearchInput />
-					<CategoryButton /> */}
-				</div>
-				<div className="wrapper-category-list  p-5">
-					{/* mapping the fetched category list */}
-					{categories.map((category) => {
-						return (
-							<div>
-								<h2>{category.name}</h2>
-								<p>{category.description}</p>
-							</div>
-						);
-					})}
+			<section className="section-categories bg-primary md:w-1/2 w-full ">
+				<div>
+					<HeroTitle />
 				</div>
 			</section>
-			<section className="section-quotes p-5 bg-pink-200 flex-1 "></section>
+			<section className="section-quotes mt-5 md:mt-0 h-screen md:absolute md:top-0 md:right-0 px-10 py-16 md:w-1/2 bg-primary-light  flex-1 "></section>
 		</div>
 	);
 }
