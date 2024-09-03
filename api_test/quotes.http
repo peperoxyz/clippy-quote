@@ -1,0 +1,13 @@
+### Get All Quotes
+GET http://localhost:3000/api/v1/quotes
+Content-Type: application/json
+token: myToken12345
+
+### Create All Quotes
+POST http://localhost:3000/api/v1/quotes
+Content-Type: application/json
+
+{
+    "title": "Role of personal trainer in weight loss journey",
+    "description": "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet."
+}
