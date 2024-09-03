@@ -17,10 +17,14 @@ export default function SideNav() {
 					<NavLinks />
 				</div>
 				<form>
-					<button className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-primary p-3 text-sm  font-medium hover:bg-primary-light hover:text-grey-dark md:flex-none md:justify-start md:rounded-none md:p-2 md:px-3">
+					<Link
+						href={"/"}
+						key="Home"
+						className="flex h-[48px] w-full grow items-center justify-center gap-2 rounded-md bg-primary p-3 text-sm  font-medium hover:bg-primary-light hover:text-grey-dark md:flex-none md:justify-start md:rounded-none md:p-2 md:px-3"
+					>
 						<PowerIcon className="w-6" />
 						<div className="hidden md:block">Sign Out</div>
-					</button>
+					</Link>
 				</form>
 			</div>
 		</div>
