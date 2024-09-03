@@ -36,9 +36,9 @@ export default async function Home() {
 					<Qotd />
 				</div>
 				<div className="quote-card-component mt-8">
-					{quotes.map((quote) => {
-						return <QuoteCard quote={quote} />;
-					})}
+					{quotes.map((quote) => (
+						<QuoteCard key={quote._id} quote={quote} />
+					))}
 				</div>
 			</section>
 		</div>
