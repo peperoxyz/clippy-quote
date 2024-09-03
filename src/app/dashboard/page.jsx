@@ -1,8 +1,8 @@
 import { CqLogo } from "../ui/cq-logo";
 import { crimson_text } from "../ui/fonts";
-import { HeroTitle } from "../../app/ui/dashboard/hero-title";
-import { QuoteCard } from "../../app/ui/dashboard/quote-card";
-import { CategoryCard } from "../../app/ui/dashboard/category-card";
+import { HeroTitle } from "../ui/components/hero-title";
+import { QuoteCard } from "../ui/components/quote-card";
+import { CategoryCard } from "../ui/components/category-card";
 
 export default async function Home() {
 	return (
