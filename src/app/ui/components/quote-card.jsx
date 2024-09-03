@@ -27,7 +27,6 @@ export const QuoteCard = ({ quote }) => {
 	}
 
 	function handleQotd(quote) {
-		console.log(quote);
 		localStorage.setItem("selectedQotd", JSON.stringify(quote));
 		router.refresh();
 	}
@@ -52,7 +51,7 @@ export const QuoteCard = ({ quote }) => {
 						<Image src={YoutubeIcon} alt="clip-quotes-logo-image" width={20} height={20} />
 						<p className="md:text-sm capitalize">{quote.author}</p>
 					</div>
-					<p className="leading-[28px] mt-3 text-grey-medium font-light">"{quote.transcript}"</p>
+					<p className="leading-[28px] mt-3 text-grey-medium font-light">&quot;{quote.transcript}&quot;</p>
 					<div className="flex gap-2">
 						<div className="py-3 pb-0 text-[#827F7F]">
 							<button onClick={handleDeleteData} className="font-medium border py-2 px-4 border-[#B9B8B4] rounded-[6px] bg-primary-light hover:bg-[#B9B8B4]/50 hover:text-[#3a3b39]">

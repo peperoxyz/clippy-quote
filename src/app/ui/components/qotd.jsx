@@ -29,7 +29,7 @@ export const Qotd = ({ selectedQotd }) => {
 					<p className=" capitalize">{qotd.author}</p>
 				</div>
 				<div className=" md:text-lg mt-3 text-grey-[#464646] font-light lg:leading-[2rem] md:w-full ">
-					<span>"{qotd.transcript}"</span>
+					<span>&quot;{qotd.transcript}&quot;</span>
 				</div>
 			</div>
 		</div>

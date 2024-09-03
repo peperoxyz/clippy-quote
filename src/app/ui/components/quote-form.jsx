@@ -8,7 +8,6 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export const QuoteForm = ({ categories }) => {
-	console.log(categories);
 	const router = useRouter();
 	const [author, setAuthor] = useState("");
 	const [title, setTitle] = useState("");
@@ -45,7 +44,7 @@ export const QuoteForm = ({ categories }) => {
 				<label htmlFor="category">
 					<span className="text-lg font-medium bg-primary"> Category </span> <small>(Select one)</small>
 				</label>
-				<select onChange={(e) => setCategory(e.target.value)} value={category} name="category" className="select-category w-full mt-1" id="category-selection">
+				<select onChange={(e) => setCategory(e.target.value)} value={category} id="category" name="category" className="select-category w-full mt-1">
 					{categories.map((category) => {
 						return <option key={category._id}>{category.name}</option>;
 					})}
@@ -55,17 +54,17 @@ export const QuoteForm = ({ categories }) => {
 				<label htmlFor="author">
 					<span className="text-lg font-medium bg-primary"> Author </span> <small>(Source or anonymous)</small>
 				</label>
-				<input name="author" value={author} type="text" className="input-quote mt-1 w-full" onChange={(e) => setAuthor(e.target.value)} />
+				<input name="author" id="author" value={author} type="text" className="input-quote mt-1 w-full" onChange={(e) => setAuthor(e.target.value)} />
 			</div>
 			<div className="text-[#827F7F] text-xl ">
 				<label htmlFor="title">
 					<span className="text-lg font-medium bg-primary"> Title </span> <small>(One sentence summary)</small>
 				</label>
-				<input name="title" type="text" value={title} className="input-quote mt-1 w-full" onChange={(e) => setTitle(e.target.value)} />
+				<input name="title" id="title" type="text" value={title} className="input-quote mt-1 w-full" onChange={(e) => setTitle(e.target.value)} />
 			</div>
 			<div className="text-[#827F7F] text-xl ">
 				<label htmlFor="transcript">
-					<span className="text-lg font-medium bg-primary"> Transcript </span> <small>(Full Text, dont' use the quotation mark "-")</small>
+					<span className="text-lg font-medium bg-primary"> Transcript </span> <small>(Full Text, don't have to put the quotation mark!)</small>
 				</label>
 				<textarea className="textarea-quote w-full mt-1 " name="transcript" value={transcript} id="transcript" onChange={(e) => setTranscript(e.target.value)} rows="5"></textarea>
 			</div>

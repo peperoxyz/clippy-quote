@@ -6,18 +6,6 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 export const CategoryCard = ({ categories }) => {
-	const [selectedCategory, setSelectedCategory] = useState(null);
-
-	function handleSelectedCategory(category) {
-		setSelectedCategory(category.name);
-	}
-
-	useEffect(() => {
-		if (selectedCategory !== null) {
-			console.log(selectedCategory);
-		}
-	}, [selectedCategory]);
-
 	return (
 		<div>
 			<div className="mt-12">
