@@ -1,0 +1,15 @@
+### Get All Posts
+GET http://localhost:3000/api/v1/blogs
+Content-Type: application/json
+token: myToken12345
+
+### Create A Post
+POST http://localhost:3000/api/v1/blogs
+Content-Type: application/json
+
+{
+    "title": "Learning how to learn to solve problems effectively",
+    "content": "Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.",
+    "userId": 2,
+    "categoryId": 2,
+}
