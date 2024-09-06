@@ -40,15 +40,15 @@ export const Qotd = () => {
 				</div>
 				<div className="mt-10 text-grey-dark shadow-[#FFA986] shadow-lg bg-primary p-8 lg:px-12 lg:py-10 relative">
 					<div className="w-fit px-4 py-2 top-0 rounded-md text-primary-light absolute -mt-5 bg-[#FFA986]">Mindset and Beliefs</div>
-					<div className={`${crimson_text.className} text-xl md:text-2xl font-bold text-grey-dark capitalize`}>When something worries you, stop.</div>
+					<div className={`${crimson_text.className} text-xl md:text-2xl font-bold text-grey-dark capitalize`}>If you are afraid of something, then get mad..</div>
 					<div className="flex gap-1 items-center">
 						<Image src={YoutubeIcon} alt="clip-quotes-logo-image" width={25} height={25} />
 						<p className=" capitalize">ThePrimeagen</p>
 					</div>
 					<div className=" md:text-lg mt-3 text-grey-[#464646] font-light lg:leading-[2rem] md:w-full ">
 						<span>
-							&quot;You've solved problems in the past. You're gonna solve this one too. You started to learn how to program knowing nothing about programming, and now you're doing it fulltime. Just think about how far you've
-							come, and how many problems you've solved.&quot;
+							&quot;If you are afraid of something, then get mad. Anger kills fear. Get mad at your inability to achieve the things that you want. Then identify what exactly you are afraid of and break it down into small steps
+							that progressively get harder as you get competent.&quot;
 						</span>
 					</div>
 				</div>
