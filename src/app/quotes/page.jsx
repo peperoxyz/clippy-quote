@@ -1,7 +1,7 @@
 import { HeroTitle } from "../ui/components/hero-title";
-import { QuoteCard } from "../ui/components/quote-card";
-import { QuoteForm } from "../ui/components/quote-form";
-import { Qotd } from "../ui/components/qotd";
+import { QuoteCard } from "../ui/components/quotes/quote-card";
+import { QuoteForm } from "../ui/components/quotes/quote-form";
+import { Qotd } from "../ui/components/quotes/qotd";
 
 async function fetchQuotes() {
 	const res = await fetch("https://v1.appbackend.io/v1/rows/dfysIrXThAj0", {
@@ -32,10 +32,10 @@ export default async function Home() {
 				<QuoteForm categories={categories} />
 			</section>
 			<section className="section-quotes md:rounded-none rounded-[6px] min-h-screen md:absolute md:top-0 right-0 px-10 md:px-12 py-12 md:w-1/2 bg-primary-light  flex-1 ">
-				<div>
+				<div className="top-0 sticky z-20 bg-primary-light pt-3">
 					<Qotd />
 				</div>
-				<div className="quote-card-component mt-8">
+				<div className="quote-card-component mt-8 relative z-10">
 					{quotes.map((quote) => (
 						<QuoteCard key={quote._id} quote={quote} />
 					))}
