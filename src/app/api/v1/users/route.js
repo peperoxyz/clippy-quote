@@ -6,9 +6,19 @@ export async function GET() {
 	return Response.json({ message: "users retrieved successfully", data: users });
 }
 
-// POST localhost:3000/api/v1/quotes
-export async function POST(req) {
-	const body = await req.json();
+// CREATE NEW USER
+export async function POST(request) {
+	const { username, email, password, avatarUrl, address } = await request.json();
 
-	return Response.json({ message: "Creating new quote success", quotes: [body] });
+	const newUser = await prisma.user.create({
+		data: {
+			username,
+			email,
+			password,
+			avatarUrl,
+			address,
+		},
+	});
+
+	return Response.json({ message: "Creating new user success", data: newUser });
 }
