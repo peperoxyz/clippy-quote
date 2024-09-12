@@ -12,7 +12,7 @@ export default async function UserDetail({ params }) {
 
 	return (
 		<main>
-			<h1>{user.username}'s Profile</h1>
+			<h1>{user.username}&apos;s Profile</h1>
 			<p>Email: {user.email}</p>
 			<p>Address: {user.address}</p>
 		</main>
