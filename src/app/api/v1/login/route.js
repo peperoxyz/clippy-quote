@@ -1,8 +1,9 @@
 import { prisma } from "/src/utils/prisma";
 import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken";
 
 export async function POST(req) {
-	const { email, password } = await req.json();
+	const { id, email, password } = await req.json();
 	// 1. find user in db based on user email
 	const user = await prisma.user.findUnique({
 		where: {
@@ -25,8 +26,18 @@ export async function POST(req) {
 
 	// jika match
 	// authorization
+	// ! Token JWT
+	const payload = {
+		id: user.id,
+		name: user.name,
+		email: user.email,
+	};
+
+	const token = jwt.sign(payload, "secret123", { expiresIn: "7d" });
+
 	return Response.json({
 		message: "login success!",
+		token,
 	});
 
 	// 2. matching
