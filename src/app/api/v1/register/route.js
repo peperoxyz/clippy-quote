@@ -14,5 +14,5 @@ export async function POST(req) {
 		},
 	});
 
-	return Response.json({ data: newUser }, { status: 201 });
+	return Response.json({ data: newUser, status: 201, message: "User registered succesfully" });
 }
