@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 
 // GET SINGLE USER BY ID
 export async function GET(_, { params }) {
-	const userId = Number(params.id);
+	const userId = params.id;
 
 	const user = await prisma.user.findFirst({
 		where: {
