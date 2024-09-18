@@ -14,48 +14,92 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  username  String
+  id        String  @id @default(cuid())
+  username  String  @unique
   email     String  @unique
   password  String
-  avatarUrl String?
-  address   String  @default("Earth")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  posts Post[]
-  comments Comment[]
+  // Relations
+  quotes Quote[]
+  bookmarks UserBookmark[]
+  likes UserLike[]
 }
 
-model Post {
-  id         Int    @id @default(autoincrement())
-  title      String
-  content    String
+model Quote {
+  id        String @id @default(cuid())
+  title     String
+  transcript String
+  author String?
+  resource String?
+  countLikes Int @default(0)
+  countBookmarks Int @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
 
-  // @relation(fields: kolom yang ada di tabel ini, reference: kolom di tabel yang terhubung)
-
-  userId     Int
+  // Relations
+  userId String
   user User @relation(fields: [userId], references: [id])
 
-  categoryId Int
+  categoryId String
   category Category @relation(fields: [categoryId], references: [id])
 
-  comments Comment[]
+  clipId String?
+  clip Clip? @relation(fields: [clipId], references: [id])
 
+  bookmarks UserBookmark[]
+  likes UserLike[]
+}
+
+model UserLike {
+  id String @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId String
+  user User @relation(fields: [userId], references: [id])
+
+  quoteId String
+  quote Quote @relation(fields: [quoteId], references: [id])
+
+  @@unique([userId, quoteId]) // ensures a user can only like a quote once
+}
+
+model UserBookmark {
+  id String @id @default(cuid())
+  createdAt DateTime @default(now())
+
+  // Relations
+  userId String
+  user User @relation(fields: [userId], references: [id])
+
+  quoteId String
+  quote Quote @relation(fields: [quoteId], references: [id])
+
+  @@unique([userId, quoteId]) // ensures a user can only like a quote once
 }
 
 model Category {
-  id   Int    @id @default(autoincrement())
-  name String
-  posts Post[]
+  id   String    @id @default(cuid())
+  name String    @unique
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  // Relations
+  quotes Quote[]
 }
 
-model Comment {
-  id      Int    @id @default(autoincrement())
-  comment String
+model Clip {
+  id String @id @default(cuid())
+  title String
+  youtubeChannelName String
+  url String
+  embedUrl String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 
-  postId  Int
-  post Post @relation(fields: [postId], references: [id])
-
-  userId Int
-  user User @relation(fields: [userId], references: [id])
-
+  // Relations
+  quotes Quote[]
 }
