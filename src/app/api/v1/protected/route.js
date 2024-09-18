@@ -11,6 +11,7 @@ export async function GET() {
 		jwt.verify(token, "secret123");
 		return Response.json({
 			message: "It's protected data",
+			status: 200,
 		});
 	} catch (error) {
 		console.log(error);

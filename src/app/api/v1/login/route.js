@@ -13,7 +13,7 @@ export async function POST(req) {
 
 	// null, undefined, 0, [], {}
 	if (!user) {
-		return Response.json({ message: "user not found" }, { status: 404 });
+		return Response.json({ message: "user not found", status: 404 });
 	}
 
 	// jika ada
@@ -21,7 +21,7 @@ export async function POST(req) {
 
 	// jika tidak match
 	if (!isPasswordMatch) {
-		return Response.json({ message: "password didn't match" }, { status: 400 });
+		return Response.json({ message: "password didn't match", status: 400 });
 	}
 
 	// jika match
@@ -37,6 +37,7 @@ export async function POST(req) {
 
 	return Response.json({
 		message: "login success!",
+		status: 200,
 		token,
 	});
 
