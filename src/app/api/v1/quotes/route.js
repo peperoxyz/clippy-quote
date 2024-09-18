@@ -1,11 +1,29 @@
-// GET localhost:3000/api/v1/quotes
-export async function GET() {
-	return Response.json({ message: "Getting quotes success", quotes: [] });
-}
+import { prisma } from "/src/utils/prisma";
 
-// POST localhost:3000/api/v1/quotes
 export async function POST(req) {
-	const body = await req.json();
-
-	return Response.json({ message: "Creating new quote success", quotes: [body] });
+	try {
+		const body = await req.json();
+		const newQuote = await prisma.quote.create({
+			data: {
+				userId: body.userId,
+				title: body.title,
+				transcript: body.transcript,
+				author: body.author || null,
+				resource: body.resource || null,
+				categoryId: body.categoryId,
+				clipId: body.clipId || null,
+			},
+		});
+		return Response.json({
+			message: "Creating new quote success",
+			data: newQuote,
+			status: 201,
+		});
+	} catch (error) {
+		return Response.json({
+			message: "Failed to create quote",
+			data: error.message,
+			status: 500,
+		});
+	}
 }
