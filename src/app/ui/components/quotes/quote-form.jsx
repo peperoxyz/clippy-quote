@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export const QuoteForm = ({ categories }) => {
 	const router = useRouter();
@@ -9,12 +10,14 @@ export const QuoteForm = ({ categories }) => {
 	const [transcript, setTranscript] = useState("");
 	const [category, setCategory] = useState("");
 
+	const [loading, setLoading] = useState(false);
+
 	async function handleCreateData() {
 		if (!(author && title && transcript && category)) {
-			alert("All fields must be filled!");
+			toast.error("All fields must be filled!");
 			return;
 		} else {
-			await fetch("https://v1.appbackend.io/v1/rows/dfysIrXThAj0", {
+			const res = await fetch("https://v1.appbackend.io/v1/rows/dfysIrXThAj0", {
 				cache: "no-store",
 				method: "POST",
 				headers: {
@@ -32,11 +35,18 @@ export const QuoteForm = ({ categories }) => {
 				]),
 			});
 
-			setAuthor("");
-			setTitle("");
-			setTranscript("");
-			setCategory("");
-			router.refresh();
+			const data = await res.json();
+			console.log(data);
+
+			if (data) {
+				router.refresh();
+				setAuthor("");
+				setTitle("");
+				setTranscript("");
+				setCategory("");
+				setLoading(false);
+				toast.success("Quote created successfully");
+			}
 		}
 		router.refresh();
 	}
@@ -75,8 +85,8 @@ export const QuoteForm = ({ categories }) => {
 				<textarea className="textarea-quote w-full mt-1 " name="transcript" value={transcript} id="transcript" required onChange={(e) => setTranscript(e.target.value)} rows="5"></textarea>
 			</div>
 			<div className="text-[#827F7F] w-full flex justify-end">
-				<button onClick={handleCreateData} className="font-medium border py-2 px-4 border-[#B9B8B4] rounded-[6px] bg-primary-light hover:bg-[#B9B8B4]/50 hover:text-[#3a3b39]">
-					Submit
+				<button disabled={loading} onClick={handleCreateData} className="font-medium border py-2 px-4 border-[#B9B8B4] rounded-[6px] bg-primary-light hover:bg-[#B9B8B4]/50 hover:text-[#3a3b39] disabled:opacity-50">
+					{loading ? "Loading..." : "Submit"}
 				</button>
 			</div>
 		</div>

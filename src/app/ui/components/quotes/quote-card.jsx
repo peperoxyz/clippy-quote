@@ -10,23 +10,35 @@ import { useRouter } from "next/navigation";
 import { quotesAtom } from "./quote-atom";
 import { useAtom } from "jotai";
 
+import toast from "react-hot-toast";
+
 export const QuoteCard = ({ quote }) => {
 	const router = useRouter();
 	const [qotd, setQotd] = useAtom(quotesAtom);
 	const [vote, setVote] = useState(quote.likes);
+
+	const [loading, setLoading] = useState(false);
 
 	function handleQotd(quote) {
 		setQotd(quote);
 	}
 
 	async function handleDeleteData() {
-		await fetch("https://v1.appbackend.io/v1/rows/dfysIrXThAj0", {
+		setLoading(true);
+		const res = await fetch("https://v1.appbackend.io/v1/rows/dfysIrXThAj0", {
 			method: "DELETE",
 			headers: {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify([quote._id]),
 		});
+
+		const data = await res.json();
+
+		if (data) {
+			setLoading(false);
+			toast.success("Quotes deleted successfully!");
+		}
 
 		router.refresh();
 	}
@@ -102,8 +114,8 @@ export const QuoteCard = ({ quote }) => {
 							</div>
 						</div>
 						<div className="py-3 pb-0 text-[#827F7F]">
-							<button onClick={handleDeleteData} className="font-medium border py-2 px-4 border-[#B9B8B4] rounded-[6px] bg-primary-light hover:bg-[#B9B8B4]/50 hover:text-[#3a3b39]">
-								Delete
+							<button disabled={loading} onClick={handleDeleteData} className="font-medium border py-2 px-4 border-[#B9B8B4] rounded-[6px] bg-primary-light hover:bg-[#B9B8B4]/50 hover:text-[#3a3b39] disabled:opacity-50">
+								{loading ? "Loading..." : "Delete"}
 							</button>
 						</div>
 					</div>

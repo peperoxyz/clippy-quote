@@ -1,10 +1,17 @@
+"use client";
+
 import Image from "next/image";
 import { crimson_text } from "./ui/fonts";
 import WelcomeBg from "../assets/images/welcome-bg.png";
 import { CqLogoLight } from "./ui/cq-logo-light";
 import Link from "next/link";
 
+import toast from "react-hot-toast";
+import { useState } from "react";
+
 export default function Home() {
+	const [loading, setLoading] = useState(false);
+
 	return (
 		<main className="relative min-h-screen">
 			<Image src={WelcomeBg} alt="background-image-home" layout="fill" objectFit="cover" className="z-[-1]" />
@@ -19,7 +26,15 @@ export default function Home() {
 					Transform YouTube clipped videos into valuable insights with <b className="font-bold bg-[#EE5353]">ClippyQuote</b>. Clip your favorites, curate them with ease, and contemplate their meaning—all in one sleek platform.
 				</div>
 				<Link href={"/quotes"} key="Quotes">
-					<button className="mt-5 font-medium border py-2 px-4 border-white text-lg text-white rounded-[6px] bg-none hover:bg-white hover:text-red-600">Start Here</button>
+					<button
+						onClick={() => {
+							setLoading(true);
+							toast.success("Success!");
+						}}
+						className="mt-5 font-medium border py-2 px-4 border-white text-lg text-white rounded-[6px] bg-none hover:bg-white hover:text-red-600"
+					>
+						{loading ? "Loading..." : "Start Here"}
+					</button>
 				</Link>
 			</div>
 		</main>
