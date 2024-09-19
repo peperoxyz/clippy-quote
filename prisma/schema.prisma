@@ -25,6 +25,16 @@ model User {
   quotes Quote[]
   bookmarks UserBookmark[]
   likes UserLike[]
+  session Session? // new
+}
+
+// new: model session: 1to1 with user - 1 user hanya bisa menambah 1 baris di table session saja. jika mau login lagi, harus hapus existing row dengan id user yang sama
+model Session {
+  id String @id @default(cuid())
+
+  // relations
+  userId String @unique // fk
+  user User @relation(fields: [userId], references: [id])
 }
 
 model Quote {

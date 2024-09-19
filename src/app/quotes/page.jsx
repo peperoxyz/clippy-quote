@@ -3,21 +3,7 @@ import { QuoteCard } from "../ui/components/quotes/quote-card";
 import { QuoteForm } from "../ui/components/quotes/quote-form";
 import { Qotd } from "../ui/components/quotes/qotd";
 
-async function fetchQuotes() {
-	const res = await fetch("https://v1.appbackend.io/v1/rows/dfysIrXThAj0", {
-		cache: "no-store",
-	});
-	const { data } = await res.json();
-	return data;
-}
-
-async function fetchCategories() {
-	const res = await fetch("https://v1.appbackend.io/v1/rows/QSnvVuqR8Kdh", {
-		cache: "no-store",
-	});
-	const { data } = await res.json();
-	return data;
-}
+import { fetchCategories, fetchQuotes } from "../lib/fetch-data";
 
 export default async function Home() {
 	const quotes = await fetchQuotes();

@@ -3,8 +3,8 @@ POST http://localhost:3000/api/v1/register
 Content-Type: application/json
 
 {
-    "username": "Fajar",
-    "email" : "fajar@devscale.co.id",
+    "username": "peperoxyz",
+    "email" : "peperoxyz@devscale.id",
     "password": "123456"
 }
 
@@ -13,6 +13,14 @@ POST http://localhost:3000/api/v1/login
 Content-Type: application/json
 
 {
-    "email" : "adil@devscale.co.id",
+    "email" : "peperoxyz@devscale.id",
     "password": "123456"
 }
+
+### Access Protected Endpoint
+GET http://localhost:3000/api/v1/protected
+Authorization: Bearer cm19hptj7000t40uu6yze7hs7
+
+### Logout Account
+POST http://localhost:3000/api/v1/logout
+Authorization: Bearer cm19hptj7000t40uu6yze7hs7

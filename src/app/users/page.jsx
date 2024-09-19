@@ -1,14 +1,9 @@
 import Link from "next/link";
-
-async function getUsers() {
-	const res = await fetch("http://localhost:3000/api/v1/users", { cache: "no-store" });
-	const { data } = await res.json();
-	console.log(data);
-	return data;
-}
+import { fetchUsers } from "../lib/fetch-data";
 
 export default async function Home() {
-	const users = await getUsers();
+	const users = await fetchUsers();
+	console.log(users);
 	return (
 		<main>
 			<div>
