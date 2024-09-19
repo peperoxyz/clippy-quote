@@ -18,7 +18,7 @@ export default async function Home() {
 				<QuoteForm categories={categories} />
 			</section>
 			<section className="section-quotes md:rounded-none rounded-[6px] min-h-screen md:absolute md:top-0 right-0 px-10 md:px-12 py-12 md:w-1/2 bg-primary-light  flex-1 ">
-				<div className="top-0 sticky z-20 bg-primary-light pt-3">
+				<div className="top-0 z-20 bg-primary-light pt-3">
 					<Qotd />
 				</div>
 				<div className="quote-card-component mt-8 relative z-10">
