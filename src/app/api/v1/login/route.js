@@ -1,9 +1,16 @@
 import { prisma } from "/src/utils/prisma";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+// import jwt from "jsonwebtoken";
 
 export async function POST(req) {
-	const { id, email, password } = await req.json();
+	/**
+	 * 1. find user in db by user email
+	 * 2. matching data inserted
+	 * 3. authorization
+	 */
+
+	const { email, password } = await req.json();
+
 	// 1. find user in db based on user email
 	const user = await prisma.user.findUnique({
 		where: {
@@ -11,22 +18,38 @@ export async function POST(req) {
 		},
 	});
 
-	// null, undefined, 0, [], {}
+	// if user == undefined or null or 0 or false, then return error message
 	if (!user) {
-		return Response.json({ message: "user not found", status: 404 });
+		return Response.json({ message: "User not found", status: 404 });
 	}
 
-	// jika ada
+	// 2. if user is not undefined, then check if password inserted is matched
 	const isPasswordMatch = await bcrypt.compare(password, user.password);
 
-	// jika tidak match
+	// if password is not matching, then return error message
 	if (!isPasswordMatch) {
-		return Response.json({ message: "password didn't match", status: 400 });
+		return Response.json({ message: "Invalid credentials", status: 400 });
 	}
 
-	// jika match
-	// authorization
-	// ! Token JWT
+	// if password matched or true,
+
+	// 3. authorization
+	// ! Session-Based
+	const session = await prisma.session.create({
+		data: {
+			userId: user.id,
+		},
+	});
+
+	return Response.json({
+		message: "Login success!",
+		status: 200,
+		sessionId: session.id,
+	});
+
+	/**  ! Token-Based (JWT)
+
+	// payload yang akan dikirimkan as response
 	const payload = {
 		id: user.id,
 		name: user.name,
@@ -36,11 +59,10 @@ export async function POST(req) {
 	const token = jwt.sign(payload, "secret123", { expiresIn: "7d" });
 
 	return Response.json({
-		message: "login success!",
+		message: "Login success!",
 		status: 200,
 		token,
 	});
 
-	// 2. matching
-	// 3. authorization
+	*/
 }
