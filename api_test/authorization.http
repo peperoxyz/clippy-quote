@@ -1,0 +1,18 @@
+### Register an account
+POST http://localhost:3000/api/v1/register
+Content-Type: application/json
+
+{
+    "username": "Fajar",
+    "email" : "fajar@devscale.co.id",
+    "password": "123456"
+}
+
+### Login User
+POST http://localhost:3000/api/v1/login
+Content-Type: application/json
+
+{
+    "email" : "adil@devscale.co.id",
+    "password": "123456"
+}
