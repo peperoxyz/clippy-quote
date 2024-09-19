@@ -1,5 +1,5 @@
 import { RegisterForm } from "..//ui/components/register-form";
-import fetchCategories from "../lib/fetch-data";
+import { fetchCategories } from "../lib/fetch-data";
 
 export default async function Home() {
 	const categories = await fetchCategories();
