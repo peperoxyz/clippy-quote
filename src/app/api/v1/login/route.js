@@ -34,7 +34,24 @@ export async function POST(req) {
 	// if password matched or true,
 
 	// 3. authorization
-	// ! Session-Based
+
+	// check collision: check apakah session dengan id yang lagi login itu sama, (artinya session untuk akun tersebut sudah dibuat), maka hapus terlebih dahulu agar bisa login lagi
+	const existedSessionUser = await prisma.session.findFirst({
+		where: {
+			userId: user.id,
+		},
+	});
+
+	// jika exist, then hapus
+	if (existedSessionUser) {
+		await prisma.session.delete({
+			where: {
+				userId: user.id,
+			},
+		});
+	}
+
+	// Create ulang session ! Session-Based
 	const session = await prisma.session.create({
 		data: {
 			userId: user.id,
