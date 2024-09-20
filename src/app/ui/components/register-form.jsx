@@ -29,9 +29,10 @@ export const RegisterForm = () => {
 			});
 
 			const data = await res.json();
-			toast.success(data.message);
-
-			setLoading(false);
+			if (data) {
+				setLoading(false);
+				toast.success(data.message);
+			}
 
 			setUsername("");
 			setEmail("");
