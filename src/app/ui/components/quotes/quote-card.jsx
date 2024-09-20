@@ -36,10 +36,10 @@ export const QuoteCard = ({ quote }) => {
 		const data = await res.json();
 
 		if (data) {
+			router.refresh();
 			setLoading(false);
 			toast.success("Quotes deleted successfully!");
 		}
-
 		router.refresh();
 	}
 
