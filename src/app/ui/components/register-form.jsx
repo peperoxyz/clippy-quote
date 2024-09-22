@@ -16,7 +16,7 @@ export const RegisterForm = () => {
 			return;
 		} else {
 			setLoading(true);
-			const res = await fetch("https://clippy-quote.vercel.app/api/v1/register", {
+			const res = await fetch("/api/v1/register", {
 				method: "POST",
 				headers: {
 					"Access-Control-Allow-Origin": "*",
