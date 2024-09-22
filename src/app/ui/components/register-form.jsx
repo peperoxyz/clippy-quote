@@ -16,10 +16,12 @@ export const RegisterForm = () => {
 			return;
 		} else {
 			setLoading(true);
-			const res = await fetch("http://localhost:3000/api/v1/register", {
+			const res = await fetch("https://clippy-quote.vercel.app/api/v1/register", {
 				method: "POST",
 				headers: {
-					"Content-Type": "application/json",
+					"Access-Control-Allow-Origin": "*",
+					"Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+					"Access-Control-Allow-Headers": "Content-Type, Authorization",
 				},
 				body: JSON.stringify({
 					username,
